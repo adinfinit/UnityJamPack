@@ -98,7 +98,9 @@ SubShader{
 
 		float4 frag(v2f_img i) : COLOR{
 			float r = detectEdge(_MainTex, _MainTex_TexelSize, i.uv);
-			return float4(r, r, r, r);
+			float4 x = tex2D(_MainTex, i.uv);
+
+			return float4(x.r, x.g, x.b, r);
 		}
 		ENDCG
 	}

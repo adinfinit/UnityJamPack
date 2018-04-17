@@ -5,7 +5,7 @@ using System.Collections;
 public class LineEffect : MonoBehaviour
 {
 	[Range(0.5f, 1.0f)]
-	public float lineWidth = 0.97f;
+	public float lineWidth = 1f;
 	[Range(0, 5)]
 	public int iterations = 3;
 

@@ -44,8 +44,11 @@ SubShader {
 			s /= 4.0f + 4.0f * 0.7071f;
 			
 			// fill stray empty pixels
-			if(x.a < 0.8f && s > 0.8f){
-				return s;
+			if(x.a < 0.7f && s > 0.5f){
+				if(s > 0.6f) {
+					return 1.0f;
+				}
+				return max(x.a, (s - 0.5f) / 0.1f);
 			}
 
 			return x.a;
@@ -53,6 +56,10 @@ SubShader {
 
 		float4 frag(v2f_img i) : COLOR {
 			float fill = filling(_MainTex, _MainTex_TexelSize, i.uv);
+			
+			// float4 x = tex2D(_MainTex, i.uv);
+			// x.a = 1.0f;
+			// return lerp(_BackgroundColor, x, fill);
 			return lerp(_BackgroundColor, _LineColor, fill);
 		}
 		ENDCG
