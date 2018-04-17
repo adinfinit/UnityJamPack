@@ -76,6 +76,13 @@ SubShader{
 			float ALIAS = 4.0f / MAX;
 			s /= MAX;
 
+			// are we outside a shape
+			if(x.a < 0.7f){
+				// alias outer edge
+				return s / ALIAS;
+			}
+
+			// inside the shapes
 			if (s < _LineWidth - ALIAS) {
 				return 1.0f;
 			}
@@ -87,7 +94,6 @@ SubShader{
 
 			// make insides transparent
 			return 0.0f;
-			//return s;
 		}
 
 		float4 frag(v2f_img i) : COLOR{
