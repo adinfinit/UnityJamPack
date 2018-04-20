@@ -11,7 +11,7 @@ public class SoundEntry : ScriptableObject
 
 	[Range (0f, 1f)] public float volume = 1.0f;
 	[Range (0f, 0.5f)] public float pitchModulation = 0.05f;
-	public Effect[] effects;
+	// public Effect[] effects;
 
 	public bool isActive = true;
 
@@ -26,8 +26,8 @@ public class SoundEntry : ScriptableObject
 		player.time = 0f;
 		player.Play ();
 
-		foreach (Effect e in effects)
-			e.Play ();
+		//foreach (Effect e in effects)
+		//	e.Play ();
 	}
 
 	public virtual void Play (AudioSource player, float volume)
